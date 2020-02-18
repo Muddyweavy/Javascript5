@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Monkey chooser</title>
+    <style>
+
+    div.hkpicture {
+      height:450px;
+      width:300px;
+      float:left;
+      background-color:red;
+      border:solid 1px black;
+    }
+    #pics {
+      width:900px;
+      height:1350px;
+      border:solid 1px black;
+      font-size: 0px;
+      margin:auto;
+    }
+
+    </style>
+  </head>
+  <body id="wrapper">
+    <h1>Imagechooser</h1>
+    <h3>Choose your favorite image</h3>
+    <div id="pics">
+
+    </div>
+    <script>
+    pics = document.getElementById("pics");
+    nieuwElement = document.createElement("div");
+    nieuwElement.className = "hkpicture";
+    pics.appendChild(nieuwElement);
+    </script>
+  </body><!-- wrapper -->
+</html>
