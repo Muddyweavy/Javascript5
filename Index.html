@@ -4,13 +4,22 @@
     <title>Monkey chooser</title>
     <style>
 
-    div.hkpicture {
+    div.picture-holder {
+      box-sizing:border-box;
       height:450px;
       width:300px;
       float:left;
-      background-color:red;
       border:solid 1px black;
     }
+
+    div.favoriet {
+      width:300px;
+      height:150px;
+      background-image:none;
+      background-repeat:no-repeat;
+      background-position:center;
+    }
+
     #pics {
       width:900px;
       height:1350px;
@@ -29,9 +38,47 @@
     </div>
     <script>
     pics = document.getElementById("pics");
-    nieuwElement = document.createElement("div");
-    nieuwElement.className = "hkpicture";
-    pics.appendChild(nieuwElement);
+    createPicsHolders();
+    createHkImages();
+
+    function createPicsHolders() {
+    	for(var i = 0; i < 9; i++) {
+    		  pictureHolder = document.createElement("div");
+    		  pictureHolder.className = "picture-holder";
+    		  pictureHolder.id = "picture-holder-" + i;
+    		  pics.appendChild(pictureHolder);
+    	}
+    }
+
+    function createHkImages() {
+    	pictureHolders = document.getElementsByClassName("picture-holder");
+    	for (var i = 0; i < pictureHolders.length; i++) {
+          favoriet = document.createElement("div");
+          favoriet.className = "favoriet";
+          favoriet.id = "favoriet_" + (i+1);
+    	    hkPlaatje = document.createElement("img");
+    	    hkPlaatje.src = "hk" + (i+1) + ".png";
+          hkPlaatje.id = (i+1);
+          hkPlaatje.addEventListener("click", function() {
+            maakFavoriet(this.id);
+          });
+          pictureHolders[i].appendChild(favoriet);
+    	    pictureHolders[i].appendChild(hkPlaatje);
+    	}
+    }
+
+    function maakFavoriet(id) {
+      console.log("maak mij favoriet het gaat om image" + id );
+      notsofavoriet = document.getElementsByClassName("favoriet");
+
+      for (var i = 0; i < notsofavoriet.length; i++) {
+        notsofavoriet[i].style.backgroundImage = "none";
+      }
+
+      favoriet = document.getElementById("favoriet_" + id);
+      favoriet.style.backgroundImage = "url('like.png')";
+    }
+
     </script>
   </body><!-- wrapper -->
 </html>
